@@ -52,46 +52,50 @@ do trainings and a dedicated support with 24 hour SLA.
 
 Generally, it's still the same as the [official setup](https://docs.cvat.ai/docs/administration/basics/installation/). You need to set up [Docker](https://docs.docker.com/desktop/) first. Next, follow these steps:
 
-- Clone this repository using Git or GitHub Desktop.
-The following command will clone the latest `develop` branch:
-```
-git clone https://github.com/ZakeyJack/cvat
-cd cvat
-```
+1. **Clone this repository using Git or GitHub Desktop.**
+   The following command will clone the latest `develop` branch:
+   ```bash
+   git clone https://github.com/ZakeyJack/cvat
+   cd cvat
+   ```
 
-- To access CVAT over a network or through a different system, export the CVAT_HOST environment variable.
-Linux:
-```
-export CVAT_HOST=FQDN_or_YOUR-IP-ADDRESS
-```
-Windows (Command Prompt):
-```
-set CVAT_HOST=FQDN_or_YOUR-IP-ADDRESS
-```
-Windows (PowerShell):
-```
-$env:CVAT_HOST="FQDN_or_YOUR-IP-ADDRESS"
-```
+2. **Export the `CVAT_HOST` environment variable to access CVAT over a network or through a different system.**
+   - **Linux:**
+     ```bash
+     export CVAT_HOST=FQDN_or_YOUR-IP-ADDRESS
+     ```
+   - **Windows (Command Prompt):**
+     ```cmd
+     set CVAT_HOST=FQDN_or_YOUR-IP-ADDRESS
+     ```
+   - **Windows (PowerShell):**
+     ```powershell
+     $env:CVAT_HOST="FQDN_or_YOUR-IP-ADDRESS"
+     ```
 
-- Run the Docker containers. It will take some time to download the latest CVAT and other required images like PostgreSQL, Redis, and to start the containers.
-If you want to run the container on a server, use:
-```
-docker compose -f docker-compose.yml -f docker-compose.settings_overlay.local.yml up -d
-```
-Whereas if you want to run it locally, use:
-```
-docker compose up -d
-```
+3. **Run the Docker containers.**
+   It will take some time to download the latest CVAT and other required images like PostgreSQL, Redis, and to start the containers.
+   - If you want to run the container on a server, use:
+     ```bash
+     docker compose -f docker-compose.yml -f docker-compose.settings_overlay.local.yml up -d
+     ```
+   - If you want to run it locally, use:
+     ```bash
+     docker compose up -d
+     ```
 
-- You can register a user, but by default, it will not have rights to even view the list of tasks. Therefore, you should create a superuser. A superuser can use the admin panel to assign the correct groups to other users. Please use the command below:
-```
-# enter the docker image first
-docker exec -it cvat_server /bin/bash
-# then run
-python3 ~/manage.py createsuperuser
-```
-  Choose a username and a password for your admin account. For more information, please read the [Django documentation](https://docs.djangoproject.com/en/2.2/ref/django-admin/#createsuperuser).
-
+4. **Create a superuser.**
+   You can register a user, but by default, it will not have rights to even view the list of tasks. Therefore, you should create a superuser. A superuser can use the admin panel to assign the correct groups to other users.
+   Use the following commands:
+   - Enter the Docker container:
+     ```bash
+     docker exec -it cvat_server /bin/bash
+     ```
+   - Then run:
+     ```bash
+     python3 ~/manage.py createsuperuser
+     ```
+     Choose a username and a password for your admin account. For more information, please read the [Django documentation](https://docs.djangoproject.com/en/2.2/ref/django-admin/#createsuperuser).
 
 ## Partners ❤️
 
