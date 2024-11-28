@@ -1,11 +1,11 @@
 <p align="center">
   <img src="/site/content/en/images/cvat-readme-gif.gif" alt="CVAT Platform" width="100%" max-width="800px">
 </p>
-<p align="center">
+<!-- <p align="center">
   <a href="https://app.cvat.ai/">
     <img src="/site/content/en/images/cvat-readme-button-tr-bg.png" alt="Start Annotating Now">
   </a>
-</p>
+</p> -->
 
 # Computer Vision Annotation Tool (CVAT)
 
