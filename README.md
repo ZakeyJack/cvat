@@ -36,7 +36,7 @@ do trainings and a dedicated support with 24 hour SLA.
 
 ## Quick start ⚡
 
-- [Installation guide](https://docs.cvat.ai/docs/administration/basics/installation/)
+- [Installation guide](#installation-guide)
 - [Manual](https://docs.cvat.ai/docs/manual/)
 - [Contributing](https://docs.cvat.ai/docs/contributing/)
 - [Datumaro dataset framework](https://github.com/cvat-ai/datumaro/blob/develop/README.md)
@@ -47,6 +47,41 @@ do trainings and a dedicated support with 24 hour SLA.
 - [AWS Deployment Guide](https://docs.cvat.ai/docs/administration/basics/aws-deployment-guide/)
 - [Frequently asked questions](https://docs.cvat.ai/docs/faq/)
 - [Where to ask questions](#where-to-ask-questions)
+
+## Installation Guide
+
+Generally, it's still the same as the [official setup](https://docs.cvat.ai/docs/administration/basics/installation/). You need to set up [Docker](https://docs.docker.com/desktop/) first. Next, follow these steps:
+
+- Clone this repository using Git or GitHub Desktop.
+The following command will clone the latest `develop` branch:
+```
+git clone https://github.com/ZakeyJack/cvat
+cd cvat
+```
+
+- To access CVAT over a network or through a different system, export the CVAT_HOST environment variable.
+Linux:
+```export CVAT_HOST=FQDN_or_YOUR-IP-ADDRESS```
+Windows (Command Prompt):
+```set CVAT_HOST=FQDN_or_YOUR-IP-ADDRESS```
+Windows (PowerShell):
+```$env:CVAT_HOST="FQDN_or_YOUR-IP-ADDRESS"```
+
+- Run the Docker containers. It will take some time to download the latest CVAT and other required images like PostgreSQL, Redis, and to start the containers.
+If you want to run the container on a server, use:
+```docker compose -f docker-compose.yml -f docker-compose.settings_overlay.local.yml up -d```
+Whereas if you want to run it locally, use:
+```docker compose up -d```
+
+- You can register a user, but by default, it will not have rights to even view the list of tasks. Therefore, you should create a superuser. A superuser can use the admin panel to assign the correct groups to other users. Please use the command below:
+```
+# enter the docker image first
+docker exec -it cvat_server /bin/bash
+# then run
+python3 ~/manage.py createsuperuser
+```
+  Choose a username and a password for your admin account. For more information, please read the [Django documentation](https://docs.djangoproject.com/en/2.2/ref/django-admin/#createsuperuser).
+
 
 ## Partners ❤️
 
@@ -59,31 +94,6 @@ please drop us a line at [contact@cvat.ai](mailto:contact+github@cvat.ai).
   tool for visualizing, exploring, and improving computer vision datasets and models that are
   [tightly integrated](https://voxel51.com/docs/fiftyone/integrations/cvat.html) with CVAT
   for annotation and label refinement.
-
-## Public datasets
-
-[ATLANTIS](https://github.com/smhassanerfani/atlantis), an open-source dataset for semantic segmentation
-of waterbody images, developed by [iWERS](http://ce.sc.edu/iwers/) group in the
-Department of Civil and Environmental Engineering at the University of South Carolina is using CVAT.
-
-For developing a semantic segmentation dataset using CVAT, see:
-
-- [ATLANTIS published article](https://www.sciencedirect.com/science/article/pii/S1364815222000391)
-- [ATLANTIS Development Kit](https://github.com/smhassanerfani/atlantis/tree/master/adk)
-- [ATLANTIS annotation tutorial videos](https://www.youtube.com/playlist?list=PLIfLGY-zZChS5trt7Lc3MfNhab7OWl2BR).
-
-## CVAT online: [cvat.ai](https://cvat.ai)
-
-This is an online version of CVAT. It's free, efficient, and easy to use.
-
-[cvat.ai](https://cvat.ai) runs the latest version of the tool. You can create up
-to 10 tasks there and upload up to 500Mb of data to annotate. It will only be
-visible to you or the people you assign to it.
-
-For now, it does not have [analytics features](https://docs.cvat.ai/docs/administration/advanced/analytics/)
-like management and monitoring the data annotation team. It also does not allow exporting images, just the annotations.
-
-We plan to enhance [cvat.ai](https://cvat.ai) with new powerful features. Stay tuned!
 
 ## Prebuilt Docker images 🐳
 
@@ -231,25 +241,6 @@ for determining if your use of FFmpeg requires any
 additional licenses. CVAT.ai Corporation is not responsible for obtaining any
 such licenses, nor liable for any licensing fees due in
 connection with your use of FFmpeg.
-
-## Contact us
-
-[Gitter](https://gitter.im/opencv-cvat/public) to ask CVAT usage-related questions.
-Typically questions get answered fast by the core team or community. There you can also browse other common questions.
-
-[Discord](https://discord.gg/S6sRHhuQ7K) is the place to also ask questions or discuss any other stuff related to CVAT.
-
-[LinkedIn](https://www.linkedin.com/company/cvat-ai/) for the company and work-related questions.
-
-[YouTube](https://www.youtube.com/@cvat-ai) to see screencast and tutorials about the CVAT.
-
-[GitHub issues](https://github.com/cvat-ai/cvat/issues) for feature requests or bug reports.
-If it's a bug, please add the steps to reproduce it.
-
-[#cvat](https://stackoverflow.com/search?q=%23cvat) tag on StackOverflow is one more way to ask
-questions and get our support.
-
-[contact@cvat.ai](mailto:contact+github@cvat.ai) to reach out to us if you need commercial support.
 
 ## Links
 
