@@ -242,8 +242,21 @@ services:
     image: traefik:v2.10
     container_name: traefik
     restart: always
+    command:
+      - '--providers.docker.exposedByDefault=false'
+      - '--providers.docker.network=cvat'
+      - '--entryPoints.web.address=:8080'
+      - '--providers.file.directory=/etc/traefik/rules'
+    # Uncomment to get Traefik dashboard
+      - "--entryPoints.dashboard.address=:8090"
+      - "--api.dashboard=true"
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.dashboard.entrypoints=dashboard
+      - traefik.http.routers.dashboard.service=api@internal
+      - traefik.http.routers.dashboard.rule=Host(`${CVAT_HOST:-localhost}`)
     ports:
-      - 8080:8080
+      - 4000:8080
       - 8090:8090
     environment:
       CVAT_HOST: ${CVAT_HOST:-localhost}
