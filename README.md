@@ -95,7 +95,7 @@ Generally, it's still the same as the [official setup](https://docs.cvat.ai/docs
      ```bash
      python3 ~/manage.py createsuperuser
      ```
-     Choose a username and a password for your admin account. For more information, please read the [Django documentation](https://docs.djangoproject.com/en/2.2/ref/django-admin/#createsuperuser).
+    Choose a username and a password for your admin account. For more information, please read the [Django documentation](https://docs.djangoproject.com/en/2.2/ref/django-admin/#createsuperuser).
 
 ## Partners ❤️
 
