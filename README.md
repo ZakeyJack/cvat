@@ -61,17 +61,27 @@ cd cvat
 
 - To access CVAT over a network or through a different system, export the CVAT_HOST environment variable.
 Linux:
-```export CVAT_HOST=FQDN_or_YOUR-IP-ADDRESS```
+```
+export CVAT_HOST=FQDN_or_YOUR-IP-ADDRESS
+```
 Windows (Command Prompt):
-```set CVAT_HOST=FQDN_or_YOUR-IP-ADDRESS```
+```
+set CVAT_HOST=FQDN_or_YOUR-IP-ADDRESS
+```
 Windows (PowerShell):
-```$env:CVAT_HOST="FQDN_or_YOUR-IP-ADDRESS"```
+```
+$env:CVAT_HOST="FQDN_or_YOUR-IP-ADDRESS"
+```
 
 - Run the Docker containers. It will take some time to download the latest CVAT and other required images like PostgreSQL, Redis, and to start the containers.
 If you want to run the container on a server, use:
-```docker compose -f docker-compose.yml -f docker-compose.settings_overlay.local.yml up -d```
+```
+docker compose -f docker-compose.yml -f docker-compose.settings_overlay.local.yml up -d
+```
 Whereas if you want to run it locally, use:
-```docker compose up -d```
+```
+docker compose up -d
+```
 
 - You can register a user, but by default, it will not have rights to even view the list of tasks. Therefore, you should create a superuser. A superuser can use the admin panel to assign the correct groups to other users. Please use the command below:
 ```
